@@ -1,0 +1,20 @@
+<svg width="1200" height="800" viewBox="0 0 1200 800" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="800" fill="#FFFFFF"/>
+  <rect x="80" y="120" width="1040" height="560" fill="#F7F9F8" stroke="#E5E7EB" stroke-width="2"/>
+  <g stroke="#6B7280" stroke-width="2">
+    <line x1="200" y1="200" x2="200" y2="600"/>
+    <line x1="400" y1="200" x2="400" y2="600"/>
+    <line x1="600" y1="200" x2="600" y2="600"/>
+    <line x1="800" y1="200" x2="800" y2="600"/>
+    <line x1="1000" y1="200" x2="1000" y2="600"/>
+    <line x1="120" y1="240" x2="1080" y2="240"/>
+    <line x1="120" y1="340" x2="1080" y2="340"/>
+    <line x1="120" y1="440" x2="1080" y2="440"/>
+    <line x1="120" y1="540" x2="1080" y2="540"/>
+  </g>
+  <polyline points="150,560 350,470 520,500 700,390 860,420 1040,300" stroke="#1B5E20" stroke-width="5" fill="none"/>
+  <circle cx="350" cy="470" r="8" fill="#1B5E20"/>
+  <circle cx="700" cy="390" r="8" fill="#1B5E20"/>
+  <circle cx="1040" cy="300" r="8" fill="#1B5E20"/>
+  <text x="120" y="90" fill="#111111" font-family="Arial, sans-serif" font-size="34">Project Performance and Delivery Progress</text>
+</svg>

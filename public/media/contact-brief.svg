@@ -1,0 +1,15 @@
+<svg width="1200" height="700" viewBox="0 0 1200 700" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="700" fill="#F7F9F8"/>
+  <rect x="120" y="90" width="960" height="520" fill="#FFFFFF" stroke="#E5E7EB" stroke-width="2"/>
+  <rect x="180" y="150" width="840" height="70" fill="#F7F9F8" stroke="#E5E7EB"/>
+  <rect x="180" y="260" width="390" height="70" fill="#FFFFFF" stroke="#E5E7EB"/>
+  <rect x="630" y="260" width="390" height="70" fill="#FFFFFF" stroke="#E5E7EB"/>
+  <rect x="180" y="370" width="840" height="160" fill="#FFFFFF" stroke="#E5E7EB"/>
+  <line x1="220" y1="186" x2="780" y2="186" stroke="#C7D8C9" stroke-width="4"/>
+  <line x1="220" y1="296" x2="450" y2="296" stroke="#C7D8C9" stroke-width="4"/>
+  <line x1="670" y1="296" x2="900" y2="296" stroke="#C7D8C9" stroke-width="4"/>
+  <line x1="220" y1="420" x2="980" y2="420" stroke="#C7D8C9" stroke-width="4"/>
+  <line x1="220" y1="470" x2="930" y2="470" stroke="#C7D8C9" stroke-width="4"/>
+  <rect x="180" y="560" width="250" height="34" fill="#1B5E20"/>
+  <text x="120" y="650" fill="#6B7280" font-family="Arial, sans-serif" font-size="24">Professional inquiry workflow</text>
+</svg>
