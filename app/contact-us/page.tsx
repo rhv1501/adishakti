@@ -1,150 +1,224 @@
+"use client";
+
+import { motion } from "framer-motion";
 import SiteFooter from "../components/SiteFooter";
 import SiteHeader from "../components/SiteHeader";
 
-export const metadata = {
-  title: "Contact Us | Adishakti Green Systems Pvt. Ltd.",
-  description:
-    "Contact Adishakti Green Systems for renewable feasibility, EPC planning, and PPA advisory.",
+const fadeInUp = {
+  hidden: { opacity: 0, y: 30 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } }
 };
 
+const staggerContainer = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: { staggerChildren: 0.1 }
+  }
+};
+
+const contactDetails = [
+  {
+    icon: (
+      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+      </svg>
+    ),
+    label: "Email",
+    value: "business@adishaktigreensystems.com"
+  },
+  {
+    icon: (
+      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+      </svg>
+    ),
+    label: "Phone",
+    value: "+91 90000 00000"
+  },
+  {
+    icon: (
+      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+      </svg>
+    ),
+    label: "Coverage",
+    value: "Pan India Presence"
+  }
+];
+
 const nextSteps = [
-  "Consultation response within one business day",
-  "Initial techno-commercial review call",
-  "Feasibility direction based on load and location",
+  {
+    title: "Inquiry Analysis",
+    description: "Our strategic team reviews your current energy profile and business objectives."
+  },
+  {
+    title: "Feasibility Review",
+    description: "Initial techno-commercial assessment based on load requirements and geographical location."
+  },
+  {
+    title: "Consultation Call",
+    description: "A deep-dive discussion to outline a structured roadmap for your renewable energy transition."
+  }
 ];
 
 export default function ContactUsPage() {
   return (
-    <div className="min-h-screen bg-[#F7F9F8] text-[#111111]">
+    <div className="min-h-screen bg-[var(--background)] text-[var(--foreground)] selection:bg-[var(--accent)]">
       <SiteHeader />
-      <section className="hero-shell border-b border-[#E5E7EB] bg-[#111111]">
-        <video
-          autoPlay
-          muted
-          loop
-          playsInline
-          poster="/media/video-poster.svg"
-          className="hero-media absolute inset-0 h-full w-full object-cover"
-        >
-          <source src="/media/adishakti-overview.mp4" type="video/mp4" />
-        </video>
-        <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/55 to-black/35" />
-        <div className="site-container relative z-10 flex min-h-[66vh] items-end py-14 sm:py-16 md:py-20">
-          <div className="max-w-3xl text-white">
-            <p className="hero-kicker text-xs font-semibold uppercase tracking-[0.14em] text-white/80">
-              Contact Us
-            </p>
-            <h1 className="hero-heading mt-3 text-4xl font-semibold leading-[1.04] sm:text-5xl md:text-7xl">
-              Discuss Your Renewable Energy Requirement
-            </h1>
-            <p className="hero-copy mt-5 max-w-2xl text-sm leading-6 text-white/85 md:text-base">
-              Share your current electricity profile and business objective. We
-              provide a structured response focused on feasibility, risk, and
-              ROI.
-            </p>
-          </div>
+
+      {/* Hero Section */}
+      <section className="relative pt-32 pb-20 md:pt-48 md:pb-32 overflow-hidden bg-[var(--primary)]">
+        <div className="absolute inset-0 z-0">
+          <img 
+            src="/contact_consultancy_hero_abstract_1778774249951.png" 
+            alt="Contact Us" 
+            className="h-full w-full object-cover opacity-40"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-[var(--primary)]/60 via-[var(--primary)] to-[var(--primary)]" />
+        </div>
+
+        <div className="site-container relative z-10">
+          <motion.div
+            initial="hidden"
+            animate="visible"
+            variants={staggerContainer}
+            className="max-w-4xl"
+          >
+            <motion.p variants={fadeInUp} className="text-sm md:text-base font-bold uppercase tracking-[0.3em] text-[var(--accent)] mb-6">
+              Strategic Engagement
+            </motion.p>
+            <motion.h1 variants={fadeInUp} className="text-5xl sm:text-6xl md:text-8xl font-bold leading-[0.95] tracking-tight mb-8 text-white">
+              Connect with Our<br />Strategic Team
+            </motion.h1>
+            <motion.p variants={fadeInUp} className="max-w-2xl text-xl md:text-2xl font-light leading-relaxed text-white/80 mb-12">
+              Share your current energy profile. We will return with a structured roadmap for execution certainty and long-horizon financial outcomes.
+            </motion.p>
+          </motion.div>
         </div>
       </section>
 
-      <main className="site-container section-stack py-8 sm:py-10 md:py-14">
-        <section className="grid gap-8 border-t border-[#E5E7EB] pt-14 sm:pt-16 md:grid-cols-2 md:pt-20">
-          <div className="border border-[#E5E7EB] bg-white p-6">
-            <h2 className="text-2xl font-semibold md:text-3xl">Inquiry Form</h2>
-            <form className="mt-5 grid gap-4 sm:grid-cols-2">
-              <label className="text-sm text-[#374151] sm:col-span-1">
-                Name
-                <input
-                  type="text"
-                  name="name"
-                  required
-                  className="mt-2 w-full border border-[#E5E7EB] px-3 py-2 text-sm outline-none focus:border-[#1B5E20]"
+      <main className="site-container -mt-12 md:-mt-24 relative z-20 pb-32">
+        <div className="grid lg:grid-cols-12 gap-8 md:gap-12">
+          
+          {/* Contact Form */}
+          <motion.div 
+            initial="hidden" 
+            whileInView="visible" 
+            viewport={{ once: true }} 
+            variants={fadeInUp}
+            className="lg:col-span-7 bg-white p-8 md:p-16 rounded-[40px] shadow-2xl border border-[var(--border)]"
+          >
+            <h2 className="text-3xl font-bold text-[var(--primary)] mb-8">Inquiry Form</h2>
+            <form className="grid sm:grid-cols-2 gap-8">
+              <div className="space-y-2">
+                <label className="text-xs font-bold uppercase tracking-widest text-[var(--muted)]">Full Name</label>
+                <input 
+                  type="text" 
+                  required 
+                  className="w-full bg-[var(--background)] border border-[var(--border)] rounded-2xl px-6 py-4 outline-none focus:border-[var(--accent)] focus:ring-2 focus:ring-[var(--accent)]/10 transition-all font-medium"
                 />
-              </label>
-              <label className="text-sm text-[#374151] sm:col-span-1">
-                Company
-                <input
-                  type="text"
-                  name="company"
-                  required
-                  className="mt-2 w-full border border-[#E5E7EB] px-3 py-2 text-sm outline-none focus:border-[#1B5E20]"
+              </div>
+              <div className="space-y-2">
+                <label className="text-xs font-bold uppercase tracking-widest text-[var(--muted)]">Company</label>
+                <input 
+                  type="text" 
+                  required 
+                  className="w-full bg-[var(--background)] border border-[var(--border)] rounded-2xl px-6 py-4 outline-none focus:border-[var(--accent)] focus:ring-2 focus:ring-[var(--accent)]/10 transition-all font-medium"
                 />
-              </label>
-              <label className="text-sm text-[#374151] sm:col-span-1">
-                Monthly electricity bill (INR)
-                <input
-                  type="number"
-                  name="monthlyBill"
-                  required
-                  className="mt-2 w-full border border-[#E5E7EB] px-3 py-2 text-sm outline-none focus:border-[#1B5E20]"
+              </div>
+              <div className="space-y-2">
+                <label className="text-xs font-bold uppercase tracking-widest text-[var(--muted)]">Monthly Power Bill (Approx INR)</label>
+                <input 
+                  type="number" 
+                  required 
+                  className="w-full bg-[var(--background)] border border-[var(--border)] rounded-2xl px-6 py-4 outline-none focus:border-[var(--accent)] focus:ring-2 focus:ring-[var(--accent)]/10 transition-all font-medium"
                 />
-              </label>
-              <label className="text-sm text-[#374151] sm:col-span-1">
-                Location
-                <input
-                  type="text"
-                  name="location"
-                  required
-                  className="mt-2 w-full border border-[#E5E7EB] px-3 py-2 text-sm outline-none focus:border-[#1B5E20]"
+              </div>
+              <div className="space-y-2">
+                <label className="text-xs font-bold uppercase tracking-widest text-[var(--muted)]">Location</label>
+                <input 
+                  type="text" 
+                  required 
+                  className="w-full bg-[var(--background)] border border-[var(--border)] rounded-2xl px-6 py-4 outline-none focus:border-[var(--accent)] focus:ring-2 focus:ring-[var(--accent)]/10 transition-all font-medium"
                 />
-              </label>
-              <button
-                type="submit"
-                className="mt-2 cta-primary w-fit sm:col-span-2"
-              >
-                Submit Inquiry
-              </button>
+              </div>
+              <div className="sm:col-span-2 space-y-2">
+                <label className="text-xs font-bold uppercase tracking-widest text-[var(--muted)]">Primary Objective</label>
+                <textarea 
+                  rows={4}
+                  className="w-full bg-[var(--background)] border border-[var(--border)] rounded-3xl px-6 py-4 outline-none focus:border-[var(--accent)] focus:ring-2 focus:ring-[var(--accent)]/10 transition-all font-medium resize-none"
+                ></textarea>
+              </div>
+              <div className="sm:col-span-2 pt-4">
+                <button 
+                  type="submit"
+                  className="w-full sm:w-fit px-12 py-5 bg-[var(--accent)] text-white text-sm font-bold tracking-widest uppercase rounded-full hover:bg-[var(--primary)] transition-all shadow-xl shadow-[var(--accent)]/20"
+                >
+                  Submit Inquiry
+                </button>
+              </div>
             </form>
-          </div>
+          </motion.div>
 
-          <aside className="space-y-4">
-            <div className="border border-[#E5E7EB] bg-white p-6">
-              <h2 className="text-2xl font-semibold md:text-3xl">
-                What Happens Next
-              </h2>
-              <ul className="mt-4 space-y-3 text-sm text-[#374151]">
-                {nextSteps.map((step) => (
-                  <li
-                    key={step}
-                    className="border border-[#E5E7EB] bg-[#F7F9F8] p-3"
-                  >
-                    {step}
-                  </li>
+          {/* Sidebar */}
+          <div className="lg:col-span-5 space-y-8">
+            
+            {/* Contact Details Cards */}
+            <motion.div 
+              initial="hidden" 
+              whileInView="visible" 
+              viewport={{ once: true }} 
+              variants={staggerContainer}
+              className="grid gap-4"
+            >
+              {contactDetails.map((detail, i) => (
+                <motion.div 
+                  key={i} 
+                  variants={fadeInUp}
+                  className="bg-white p-6 md:p-8 rounded-[32px] border border-[var(--border)] shadow-xl flex items-center gap-6 group hover:border-[var(--accent)] transition-all"
+                >
+                  <div className="w-14 h-14 rounded-2xl bg-[var(--background)] flex items-center justify-center text-[var(--accent)] group-hover:bg-[var(--accent)] group-hover:text-white transition-all">
+                    {detail.icon}
+                  </div>
+                  <div>
+                    <p className="text-[var(--muted)] text-xs font-bold uppercase tracking-widest mb-1">{detail.label}</p>
+                    <p className="text-[var(--primary)] font-bold text-lg">{detail.value}</p>
+                  </div>
+                </motion.div>
+              ))}
+            </motion.div>
+
+            {/* Pipeline Step Card */}
+            <motion.div 
+              initial="hidden" 
+              whileInView="visible" 
+              viewport={{ once: true }} 
+              variants={fadeInUp}
+              className="bg-[var(--primary)] p-8 md:p-12 rounded-[40px] text-white shadow-2xl relative overflow-hidden"
+            >
+              <div className="absolute top-0 right-0 w-32 h-32 bg-[var(--accent)]/10 rounded-full -translate-y-1/2 translate-x-1/2 blur-2xl"></div>
+              <h3 className="text-2xl font-bold mb-8 relative z-10">What Happens Next</h3>
+              <div className="space-y-8 relative z-10">
+                {nextSteps.map((step, i) => (
+                  <div key={i} className="flex gap-6">
+                    <div className="w-10 h-10 rounded-xl bg-[var(--accent)] text-white flex items-center justify-center font-black flex-shrink-0">
+                      {i + 1}
+                    </div>
+                    <div>
+                      <h4 className="font-bold text-lg mb-1">{step.title}</h4>
+                      <p className="text-white/60 text-sm leading-relaxed">{step.description}</p>
+                    </div>
+                  </div>
                 ))}
-              </ul>
-            </div>
+              </div>
+            </motion.div>
 
-            <div className="border border-[#E5E7EB] bg-white p-6 text-sm text-[#374151] leading-6">
-              <p>Email: business@adishaktigreensystems.com</p>
-              <p>Phone: +91 90000 00000</p>
-              <p>
-                Coverage: Pan India with international collaboration support
-              </p>
-            </div>
-          </aside>
-        </section>
-
-        <section className="border-t border-[#E5E7EB] pt-14 sm:pt-16 md:pt-20">
-          <div className="impact-strip">
-            <h2 className="text-2xl font-semibold md:text-3xl">
-              Ready to begin your renewable transition?
-            </h2>
-            <p className="mt-2 text-sm text-white/90">
-              Share your current energy profile and we will provide a practical
-              roadmap focused on ROI and execution certainty.
-            </p>
           </div>
-        </section>
-
-        <section className="border-t border-[#E5E7EB] pt-14 sm:pt-16 md:pt-20">
-          <div className="statement-block">
-            <p className="eyebrow text-white/80">Strategic Engagement</p>
-            <h2 className="mt-3 text-2xl font-semibold md:text-4xl">
-              Bring your energy baseline. We will return with a structured
-              roadmap.
-            </h2>
-          </div>
-        </section>
+        </div>
       </main>
+
       <SiteFooter />
     </div>
   );

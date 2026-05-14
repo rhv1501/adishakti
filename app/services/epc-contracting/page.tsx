@@ -33,7 +33,7 @@ export default function EPCContracting() {
               Turnkey EPC Contracting
             </motion.h1>
             <motion.p variants={fadeInUp} className="text-xl md:text-2xl font-light leading-relaxed text-white/90 drop-shadow-sm max-w-2xl">
-              From 2MW to 50MW, we handle end-to-end solar plant construction entirely in-house. Our engineering controls ensure maximum lifecycle generation.
+              We handle end-to-end solar plant construction entirely in-house. Our engineering controls ensure maximum lifecycle generation and long-term asset performance.
             </motion.p>
           </motion.div>
         </div>
@@ -61,10 +61,10 @@ export default function EPCContracting() {
               </motion.p>
               <motion.ul variants={staggerContainer} className="space-y-4">
                 {[
-                  "In-house engineering & construction for 2MW to 50MW plants",
+                  "In-house engineering & construction for utility-scale solar plants",
                   "Anti-sagging panel structures guaranteeing structural integrity",
                   "Hydrophobic module coatings protecting surface efficiency",
-                  "Advanced solar tracking systems unlocking up to 30% higher yields"
+                  "Advanced solar tracking systems for optimized yields"
                 ].map((item, i) => (
                   <motion.li key={i} variants={fadeInUp} className="flex items-start gap-4 text-[var(--foreground)] font-medium">
                     <span className="flex-shrink-0 w-6 h-6 rounded-full bg-[var(--accent)] flex items-center justify-center text-white text-xs mt-0.5">✓</span>

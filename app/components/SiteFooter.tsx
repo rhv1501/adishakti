@@ -16,9 +16,9 @@ export default function SiteFooter() {
         <div>
           <h4 className="text-sm font-semibold uppercase tracking-wider text-white/90">Solutions</h4>
           <ul className="mt-6 space-y-4 text-sm text-white/70">
-            <li><Link href="#services" className="hover:text-white transition-colors">Land Aggregation</Link></li>
-            <li><Link href="#services" className="hover:text-white transition-colors">Turnkey EPC</Link></li>
-            <li><Link href="#services" className="hover:text-white transition-colors">PPA Consultancy</Link></li>
+            <li><Link href="/services/ppa-consultancy" className="hover:text-white transition-colors">PPA Consultancy</Link></li>
+            <li><Link href="/services/land-aggregation" className="hover:text-white transition-colors">Land Aggregation & Grid Connectivity</Link></li>
+            <li><Link href="/services/epc-contracting" className="hover:text-white transition-colors">Turnkey EPC Contracting</Link></li>
           </ul>
         </div>
         

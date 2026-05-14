@@ -1,8 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { useMemo, useState } from "react";
-import { motion, Variants } from "framer-motion";
+import { useState } from "react";
+import { motion, Variants, AnimatePresence } from "framer-motion";
 import SiteFooter from "./components/SiteFooter";
 import SiteHeader from "./components/SiteHeader";
 
@@ -21,21 +21,81 @@ const staggerContainer: Variants = {
 };
 
 const trustMetrics = [
-  { label: "Installed and managed capacity", value: "500+ MW" },
-  { label: "Aggregated utility land", value: "13,500+ acres" },
-  { label: "Operational presence", value: "9 states" },
-  { label: "PPA tenure capability", value: "12-25 years" },
+  { 
+    label: "Renewable Energy Opportunities", 
+    value: "800+ MW",
+    detail: "Looking to reduce your electricity costs? Through our partnered network of reputed renewable energy developers, we help industries procure competitively priced solar and wind power via Open Access and Captive models. With access to 800+ MW of active renewable capacity, we enable faster, reliable, and commercially optimized power sourcing solutions."
+  },
+  { 
+    label: "Execution-Ready Opportunities", 
+    value: "300+ MW",
+    detail: "We provide developers access to renewable energy opportunities with land, GO approvals, LFS availability, and project development components bundled into structured package deals. Through direct owner connectivity and a transparent transaction process, we help developers evaluate and acquire execution-ready projects efficiently without unnecessary intermediary layers."
+  },
+  { 
+    label: "Land for Development", 
+    value: "13,500+ Acres",
+    detail: "We help solar and wind developers secure large-scale land opportunities across Tamil Nadu through our extensive network of landowners and regional partners. With access to over 13,500 acres across multiple renewable energy zones, we support developers in identifying, evaluating, aggregating, and structuring land acquisitions for utility-scale project deployment."
+  },
+  { 
+    label: "Operational Presence", 
+    value: "9 States",
+    detail: "Aadishakti Green Systems currently operates across Madhya Pradesh, Gujarat, Rajasthan, Maharashtra, Odisha, Tamil Nadu, Andhra Pradesh, Telangana, and Karnataka through its renewable energy development and partner network ecosystem. Our growing regional presence enables us to support solar and wind opportunities across multiple high-potential markets."
+  },
 ];
 
-const processSteps = [
-  "Developer capital planning",
-  "Land aggregation and approvals",
-  "EPC engineering and commissioning",
-  "Generation performance optimization",
-  "Industrial offtake via PPA",
+const industryProcessSteps = [
+  {
+    title: "Understanding Your Power Requirement",
+    description: "We analyze your power consumption patterns, operational requirements, and electricity tariff structure to identify the most suitable renewable energy procurement model."
+  },
+  {
+    title: "Identifying Suitable Renewable Energy Projects",
+    description: "Based on your location and power demand, we connect you with suitable solar or wind projects from our partnered developer network."
+  },
+  {
+    title: "Commercial Structuring & PPA Facilitation",
+    description: "We help structure Open Access or Captive Power agreements aligned with your commercial and operational objectives."
+  },
+  {
+    title: "Power Supply & Long-Term Savings",
+    description: "Once operational, renewable power is supplied through the grid, enabling long-term electricity cost savings and sustainability benefits."
+  }
+];
+
+const developerProcessSteps = [
+  {
+    title: "Share Your Project Requirement",
+    description: "Developers share requirements including state, capacity, technology, land size, and grid preference."
+  },
+  {
+    title: "Opportunity Identification",
+    description: "We identify land parcels, development-stage opportunities, or package deals from our network."
+  },
+  {
+    title: "Preliminary Details Sharing",
+    description: "We share location, land extent, status of aggregation, grid connectivity stage, and transaction structure."
+  },
+  {
+    title: "Direct Stakeholder Discussion",
+    description: "We facilitate transparent discussions with relevant landowners or project owners for direct evaluation."
+  },
+  {
+    title: "Due Diligence Support",
+    description: "We coordinate technical, legal, and financial due diligence to ensure smooth progress toward closure."
+  },
+  {
+    title: "Development or Acquisition",
+    description: "The developer proceeds with acquisition or execution depending on the nature of the opportunity."
+  }
 ];
 
 const services = [
+  {
+    title: "PPA Consultancy",
+    detail:
+      "Industry-developer alignment, tariff modelling, and contract structuring designed for long-term cost predictability and risk control.",
+    href: "/services/ppa-consultancy",
+  },
   {
     title: "Land Aggregation and Grid Connectivity",
     detail:
@@ -48,19 +108,28 @@ const services = [
       "End-to-end solar plant construction (2-50 MW) with in-house execution, anti-sagging structures, hydrophobic coatings, and tracking systems.",
     href: "/services/epc-contracting",
   },
-  {
-    title: "PPA Consultancy",
-    detail:
-      "Industry-developer alignment, tariff modelling, and contract structuring designed for long-term cost predictability and risk control.",
-    href: "/services/ppa-consultancy",
-  },
 ];
 
-const caseMetrics = [
-  { label: "Before", value: "INR 2 Cr/month" },
-  { label: "After", value: "INR 82.5 Lakhs/month" },
-  { label: "Annual Savings", value: "INR 14.1 Cr" },
+const whyRenewableData = [
+  {
+    title: "Lower & Predictable Power Costs",
+    description: "Renewable energy through Open Access and Captive Power models helps industries significantly reduce electricity expenses compared to conventional grid tariffs. Long-term PPAs also provide greater tariff stability."
+  },
+  {
+    title: "Improve Sustainability & ESG Goals",
+    description: "Switching to solar and wind energy helps industries reduce their carbon footprint and move towards cleaner operations. Renewable power adoption also strengthens ESG compliance and sustainability reporting."
+  },
+  {
+    title: "Long-Term Competitive Advantage",
+    description: "Power is one of the largest operating costs for many industries. Access to competitively priced renewable energy improves long-term operational efficiency and enhances profitability."
+  },
+  {
+    title: "Flexible Procurement Structures",
+    description: "Open Access and Captive Power models allow industries to procure renewable energy directly from large-scale solar and wind projects without investing heavily into infrastructure themselves."
+  }
 ];
+
+
 
 const clients = [
   "Manufacturing",
@@ -73,19 +142,19 @@ const clients = [
 
 const globalImpact = [
   {
-    value: "500+",
+    value: "175+",
+    unit: "MWp",
+    label: "Renewable Power Procurement Facilitation Experience",
+  },
+  {
+    value: "800+",
     unit: "MW",
-    label: "solar capacity across delivered and managed scope",
+    label: "Partnered Developer Network Capacity",
   },
   {
     value: "13,500+",
     unit: "acres",
     label: "land aggregated for utility and C&I pathways",
-  },
-  {
-    value: "14.1",
-    unit: "Cr",
-    label: "annual savings benchmark in industrial case model",
   },
   {
     value: "9",
@@ -94,56 +163,24 @@ const globalImpact = [
   },
 ];
 
-const insightCards = [
-  {
-    title: "Grid-Linked Solar Program for Industrial Clusters",
-    text: "How integrated land, EPC, and PPA planning reduces decision delays and improves cost outcomes.",
-  },
-  {
-    title: "Designing Contracts for 12-25 Year Cost Visibility",
-    text: "Commercial frameworks that align risk allocation, tariff certainty, and long-term offtake reliability.",
-  },
-  {
-    title: "Engineering Controls for Higher Generation Reliability",
-    text: "Why anti-sagging structures, coatings, and tracking architecture matter in lifecycle performance.",
-  },
-];
 
-function formatInr(value: number) {
-  return new Intl.NumberFormat("en-IN", {
-    style: "currency",
-    currency: "INR",
-    maximumFractionDigits: 0,
-  }).format(value);
-}
 
 export default function Home() {
-  const [monthlyBill, setMonthlyBill] = useState(20000000);
-
-  const roi = useMemo(() => {
-    const optimizedMonthly = monthlyBill * 0.4125;
-    const monthlySavings = monthlyBill - optimizedMonthly;
-    const annualSavings = monthlySavings * 12;
-    return { optimizedMonthly, monthlySavings, annualSavings };
-  }, [monthlyBill]);
+  const [activeMetric, setActiveMetric] = useState<number | null>(null);
+  const [processType, setProcessType] = useState<"industries" | "developers">("industries");
 
   return (
     <div className="min-h-screen bg-[var(--background)] text-[var(--foreground)] selection:bg-[var(--accent)]">
       <SiteHeader />
 
-      <section className="relative h-screen min-h-[800px] w-full overflow-hidden flex items-end pb-24 md:pb-32 bg-[#000000]">
+      <section className="relative h-screen flex items-center overflow-hidden bg-[var(--primary)]">
         <div className="absolute inset-0 z-0">
-          <video
-            autoPlay
-            muted
-            loop
-            playsInline
-            poster="/"
-            className="h-full w-full object-cover opacity-80"
-          >
-            <source src="/hero.mp4" type="video/mp4" />
-          </video>
-          <div className="absolute inset-0 bg-gradient-to-t from-[#000000] via-[#000000]/60 to-[#000000]/20" />
+          <img 
+            src="/strategic_consultancy_hero_abstract_1778766932921.png" 
+            alt="Strategic Energy Consultancy" 
+            className="h-full w-full object-cover opacity-60"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#000000] via-[#000000]/40 to-transparent" />
         </div>
 
         <div className="site-container relative z-10 w-full text-white">
@@ -153,20 +190,20 @@ export default function Home() {
             variants={staggerContainer}
             className="max-w-4xl"
           >
-            <motion.p variants={fadeInUp} className="text-sm md:text-base font-semibold uppercase tracking-[0.2em] text-[var(--accent)] mb-4">
-              Building the Future of Power
+            <motion.p variants={fadeInUp} className="text-sm md:text-base font-bold uppercase tracking-[0.3em] text-[var(--accent)] mb-6">
+              Strategic Renewable Energy Partners
             </motion.p>
-            <motion.h1 variants={fadeInUp} className="text-5xl sm:text-6xl md:text-7xl lg:text-[5.5rem] font-bold leading-[1.05] tracking-tight mb-8">
-              Integrated Renewable Energy Solutions
+            <motion.h1 variants={fadeInUp} className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold leading-[0.95] tracking-tight mb-8">
+              Facilitating India&apos;s Energy Transition
             </motion.h1>
-            <motion.p variants={fadeInUp} className="max-w-2xl text-lg md:text-xl font-light leading-relaxed text-white/80 mb-10">
-              From land acquisition to power generation and PPA structuring. Adishakti Green Systems delivers end-to-end renewable infrastructure for enterprise power users.
+            <motion.p variants={fadeInUp} className="max-w-2xl text-xl md:text-2xl font-light leading-relaxed text-white/90 mb-12">
+              Predominant consultants in Power Purchase Agreements (PPA), Land Aggregation, and Grid Connectivity. We bridge the gap between renewable energy developers and industrial power consumers.
             </motion.p>
-            <motion.div variants={fadeInUp} className="flex flex-wrap gap-4">
-              <Link href="#services" className="px-8 py-4 bg-[var(--accent)] text-white text-sm font-semibold tracking-wider uppercase hover:bg-[#0e9d6d] transition-colors">
+            <motion.div variants={fadeInUp} className="flex flex-wrap gap-6">
+              <Link href="/services/ppa-consultancy" className="px-10 py-5 bg-[var(--accent)] text-white text-sm font-bold tracking-widest uppercase hover:bg-white hover:text-[var(--primary)] transition-all rounded-full shadow-2xl shadow-[var(--accent)]/20">
                 Explore Solutions
               </Link>
-              <Link href="/contact-us" className="px-8 py-4 bg-white/10 backdrop-blur-sm border border-white/20 text-white text-sm font-semibold tracking-wider uppercase hover:bg-white hover:text-[var(--primary)] transition-all">
+              <Link href="/contact-us" className="px-10 py-5 bg-white/10 backdrop-blur-sm border border-white/20 text-white text-sm font-bold tracking-widest uppercase hover:bg-white hover:text-[var(--primary)] transition-all rounded-full">
                 Book Consultation
               </Link>
             </motion.div>
@@ -174,53 +211,100 @@ export default function Home() {
         </div>
       </section>
 
-      <main className="section-stack pb-24 md:pb-32">
+      <main className="pb-24 md:pb-32">
+        {/* Trust Metrics Section */}
         <section className="site-container -mt-16 relative z-20">
           <motion.div 
             initial="hidden" 
             whileInView="visible" 
-            viewport={{ once: true, margin: "-100px" }} 
+            viewport={{ once: true }} 
             variants={staggerContainer}
-            className="grid grid-cols-2 lg:grid-cols-4 gap-px bg-[var(--border)] shadow-2xl rounded-[32px] border border-[var(--border)] overflow-hidden"
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4"
           >
-            {trustMetrics.map((item) => (
+            {trustMetrics.map((item, index) => (
               <motion.article 
                 key={item.label} 
                 variants={fadeInUp} 
-                className="bg-white p-6 md:p-10 flex flex-col justify-center"
+                onClick={() => setActiveMetric(activeMetric === index ? null : index)}
+                className={`cursor-pointer bg-white p-10 flex flex-col justify-center rounded-[32px] border border-[var(--border)] shadow-2xl transition-all duration-500 hover:shadow-3xl ${activeMetric === index ? 'ring-2 ring-[var(--accent)] scale-[1.02]' : ''}`}
               >
-                <p className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl font-bold tracking-tight text-[var(--primary)]">
-                  {item.value}
+                <div className="flex justify-between items-start mb-4">
+                  <p className="text-4xl font-extrabold tracking-tighter text-[var(--primary)]">
+                    {item.value}
+                  </p>
+                  <motion.div 
+                    animate={{ rotate: activeMetric === index ? 180 : 0 }}
+                    className="text-[var(--accent)]"
+                  >
+                    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7"/></svg>
+                  </motion.div>
+                </div>
+                <p className="text-xs font-bold text-[var(--muted)] uppercase tracking-wider leading-relaxed">
+                  {item.label}
                 </p>
-                <p className="mt-3 text-xs sm:text-sm font-medium text-[var(--muted)]">{item.label}</p>
+                
+                <AnimatePresence>
+                  {activeMetric === index && (
+                    <motion.div
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: "auto", opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      className="overflow-hidden"
+                    >
+                      <p className="mt-6 text-sm text-[var(--muted)] leading-relaxed border-t border-[var(--border)] pt-6">
+                        {item.detail}
+                      </p>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
               </motion.article>
             ))}
           </motion.div>
         </section>
 
-        <section className="relative text-white py-16 px-6 md:py-28 md:px-12 lg:px-20 mt-32 rounded-[40px] mx-4 md:mx-8 overflow-hidden shadow-2xl">
-          <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1509391366360-2e959784a276?auto=format&fit=crop&q=80')] bg-cover bg-center bg-fixed opacity-40"></div>
-          <div className="absolute inset-0 bg-gradient-to-r from-[var(--primary)] via-[var(--primary)]/95 to-[var(--primary)]/70"></div>
-          
-          <div className="grid gap-10 md:grid-cols-[1.3fr_0.7fr] md:items-center max-w-7xl mx-auto relative z-10">
-            <motion.p 
-              initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }}
-              className="text-2xl md:text-4xl font-light leading-snug drop-shadow-sm"
-            >
-              India-focused renewable execution with enterprise governance,
-              lifecycle engineering rigor, and <span className="text-[var(--accent)] font-semibold shadow-black/10">long-horizon savings outcomes</span>.
+        {/* Core Services Grid */}
+        <section id="services" className="site-container pt-24 sm:pt-32">
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={staggerContainer} className="mb-16 md:mb-24 flex flex-col items-center text-center">
+            <motion.p variants={fadeInUp} className="text-sm font-semibold uppercase tracking-[0.2em] text-[var(--accent)]">Core Verticals</motion.p>
+            <motion.h2 variants={fadeInUp} className="mt-4 text-4xl font-bold leading-tight md:text-5xl lg:text-6xl max-w-4xl text-[var(--primary)]">
+              Integrated Service Architecture
+            </motion.h2>
+            <motion.p variants={fadeInUp} className="mt-6 max-w-2xl text-lg leading-relaxed text-[var(--muted)]">
+              Three integrated service verticals designed for infrastructure certainty and financial outcomes.
             </motion.p>
-            <motion.div initial={{ opacity: 0, x: 20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }} className="flex md:justify-end">
-              <Link
-                href="/projects"
-                className="inline-flex w-fit items-center bg-[var(--accent)] px-8 py-4 text-sm font-semibold uppercase tracking-[0.15em] text-white transition-all hover:bg-[#0e9d6d] hover:scale-105 shadow-xl hover:shadow-[var(--accent)]/20"
-              >
-                View Projects
+          </motion.div>
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={staggerContainer} className="grid lg:grid-cols-3 gap-8">
+            {services.map((service, idx) => (
+              <Link href={service.href} key={service.title} className="block">
+                <motion.article variants={fadeInUp} className="group flex flex-col justify-between p-10 rounded-[40px] text-white hover:-translate-y-2 transition-all duration-300 shadow-xl overflow-hidden relative h-full min-h-[400px]">
+                  <div 
+                    className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105"
+                    style={{ 
+                      backgroundImage: `url('${
+                        idx === 0 ? "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&q=80" 
+                        : idx === 1 ? "https://images.unsplash.com/photo-1466611653911-95081537e5b7?auto=format&fit=crop&q=80" 
+                        : "https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?auto=format&fit=crop&q=80"
+                      }')` 
+                    }}
+                  ></div>
+                  <div className="absolute inset-0 bg-gradient-to-t from-[var(--primary)] via-[var(--primary)]/80 to-transparent"></div>
+                  
+                  <div className="relative z-10">
+                    <h3 className="text-3xl font-bold mb-6 text-white drop-shadow-md">{service.title}</h3>
+                    <p className="text-white/90 leading-relaxed text-lg drop-shadow-sm font-light">
+                      {service.detail}
+                    </p>
+                  </div>
+                  <div className="relative z-10 mt-12 h-16 w-16 rounded-full border border-white/30 flex items-center justify-center group-hover:bg-[var(--accent)] group-hover:border-transparent transition-all backdrop-blur-sm shadow-xl">
+                    <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7"/></svg>
+                  </div>
+                </motion.article>
               </Link>
-            </motion.div>
-          </div>
+            ))}
+          </motion.div>
         </section>
 
+        {/* Impact Metrics */}
         <section className="site-container pt-24 sm:pt-32">
           <motion.div 
             initial="hidden" whileInView="visible" viewport={{ once: true }} variants={staggerContainer}
@@ -230,9 +314,6 @@ export default function Home() {
             <motion.h2 variants={fadeInUp} className="mt-4 text-4xl font-bold leading-tight md:text-5xl lg:text-6xl max-w-4xl text-[var(--primary)]">
               Solving enterprise energy challenges with measurable infrastructure outcomes.
             </motion.h2>
-            <motion.p variants={fadeInUp} className="mt-6 max-w-2xl text-lg leading-relaxed text-[var(--muted)]">
-              We combine infrastructure delivery discipline with commercial strategy to improve resilience, reduce carbon, and protect long-term energy economics.
-            </motion.p>
           </motion.div>
           
           <motion.div 
@@ -243,15 +324,15 @@ export default function Home() {
               <motion.article 
                 variants={fadeInUp} 
                 key={item.label} 
-                className="group relative bg-[#ffffff] border border-[var(--border)] rounded-[32px] p-8 md:p-10 hover:shadow-[0_0_40px_-15px_rgba(0,0,0,0.1)] transition-all duration-300 hover:-translate-y-1 overflow-hidden"
+                className="group relative bg-white border border-[var(--border)] rounded-[40px] p-10 hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 overflow-hidden"
               >
-                <div className="absolute top-0 left-0 w-full h-1.5 bg-gradient-to-r from-[var(--primary)] to-[var(--accent)] transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500 ease-out z-20" />
-                <div className="flex items-baseline gap-2 mb-4 relative z-10">
+                <div className="absolute top-0 left-0 w-full h-1.5 bg-[var(--accent)] transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500 ease-out z-20" />
+                <div className="flex items-baseline gap-2 mb-6 relative z-10">
                   <span className="text-5xl md:text-6xl font-extrabold tracking-tighter text-[var(--primary)]">{item.value}</span>
                   <span className="text-xl md:text-2xl font-bold text-[var(--accent)]">{item.unit}</span>
                 </div>
-                <div className="h-px w-12 bg-[var(--border)] mb-4 group-hover:w-full group-hover:bg-[var(--accent)] transition-all duration-500 relative z-10" />
-                <p className="text-sm md:text-base font-medium leading-relaxed text-[var(--muted)] group-hover:text-[var(--primary)] transition-colors duration-300 relative z-10">
+                <div className="h-px w-12 bg-[var(--border)] mb-6 group-hover:w-full group-hover:bg-[var(--accent)] transition-all duration-500 relative z-10" />
+                <p className="text-base font-medium leading-relaxed text-[var(--muted)] group-hover:text-[var(--primary)] transition-colors duration-300 relative z-10">
                   {item.label}
                 </p>
               </motion.article>
@@ -259,206 +340,104 @@ export default function Home() {
           </motion.div>
         </section>
 
-        <section className="site-container pt-24 sm:pt-32">
-          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={staggerContainer} className="mb-12 grid gap-6 md:mb-16 md:grid-cols-2 lg:gap-24">
-            <motion.h2 variants={fadeInUp} className="text-3xl font-bold leading-tight md:text-5xl text-[var(--primary)]">
-              Company Overview
-            </motion.h2>
-            <motion.p variants={fadeInUp} className="text-lg leading-relaxed text-[var(--muted)]">
-              Discover how integrated site readiness, engineering execution, and
-              long-horizon commercial structures reduce execution risk for enterprises.
-            </motion.p>
-          </motion.div>
+        {/* Why Section */}
+        <section className="site-container py-24 md:py-32">
           <motion.div 
-            initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }}
-            className="rounded-[40px] overflow-hidden shadow-2xl relative bg-black/5 w-full aspect-video border border-[var(--border)]"
+            initial="hidden" 
+            whileInView="visible" 
+            viewport={{ once: true }} 
+            variants={staggerContainer}
+            className="mb-16"
           >
-            <iframe 
-              width="100%" 
-              height="100%" 
-              src="https://www.youtube.com/embed/QPzMYw3_LOw?rel=0" 
-              title="Adishakti Green Systems Company Overview" 
-              frameBorder="0" 
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-              referrerPolicy="strict-origin-when-cross-origin"
-              allowFullScreen
-              className="w-full h-full absolute inset-0"
-            ></iframe>
-          </motion.div>
-        </section>
-
-        <section className="site-container pt-24 sm:pt-32">
-          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={staggerContainer} className="mb-12 grid gap-6 md:mb-16 md:grid-cols-2 lg:gap-24">
-            <motion.h2 variants={fadeInUp} className="text-3xl font-bold leading-tight md:text-4xl text-[var(--primary)]">
-              Why Renewable Energy
+            <motion.p variants={fadeInUp} className="text-sm font-bold uppercase tracking-[0.2em] text-[var(--accent)] mb-4 text-center">Sustainability & Strategy</motion.p>
+            <motion.h2 variants={fadeInUp} className="text-4xl md:text-6xl font-bold text-[var(--primary)] text-center leading-tight">
+              Why Renewable Energy &<br className="hidden md:block" /> Open Access Power?
             </motion.h2>
-            <motion.p variants={fadeInUp} className="text-lg leading-relaxed text-[var(--muted)]">
-              Enterprises are adopting renewable power for energy independence, lower emissions, and predictable long-term costs.
-            </motion.p>
           </motion.div>
-          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={staggerContainer} className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
-            {[
-              "Energy independence from fuel-price linked volatility",
-              "Lower carbon footprint with measurable ESG impact",
-              "Long-horizon cost visibility through structured PPAs",
-              "Resilient operating economics for energy-intensive sectors"
-            ].map((text, i) => (
-              <motion.div key={i} variants={fadeInUp} className="bg-white p-6 border border-[var(--border)] rounded-2xl">
-                <div className="w-10 h-10 rounded-full bg-[var(--background)] flex items-center justify-center mb-4 border border-[var(--border)]">
-                  <span className="text-[var(--accent)] text-sm font-bold">0{i+1}</span>
+
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
+            {whyRenewableData.map((reason, i) => (
+              <motion.div 
+                key={i} 
+                initial="hidden" 
+                whileInView="visible" 
+                viewport={{ once: true }} 
+                variants={fadeInUp}
+                className="bg-white p-10 rounded-[40px] border border-[var(--border)] shadow-sm hover:shadow-xl transition-all group"
+              >
+                <div className="w-14 h-14 rounded-2xl bg-[var(--background)] flex items-center justify-center mb-8 border border-[var(--border)] group-hover:bg-[var(--accent)] group-hover:border-[var(--accent)] transition-colors">
+                  <svg className="w-7 h-7 text-[var(--accent)] group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
                 </div>
-                <p className="text-sm font-medium leading-relaxed text-[var(--foreground)]">{text}</p>
+                <h3 className="text-xl font-bold text-[var(--primary)] mb-4">{reason.title}</h3>
+                <p className="text-sm leading-relaxed text-[var(--muted)]">{reason.description}</p>
               </motion.div>
             ))}
-          </motion.div>
-        </section>
-
-        <section className="bg-[var(--background)] py-24 sm:py-32 mt-24 sm:mt-32 border-t border-b border-[var(--border)]">
-          <div className="site-container">
-            <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={staggerContainer} className="mb-12 grid gap-6 md:mb-16 md:grid-cols-2 lg:gap-24">
-              <motion.h2 variants={fadeInUp} className="text-3xl font-bold leading-tight md:text-5xl text-[var(--primary)]">
-                How It Works
-              </motion.h2>
-              <motion.p variants={fadeInUp} className="text-lg leading-relaxed text-[var(--muted)]">
-                We connect all stakeholders into one delivery pipeline, reducing handoff risk across infrastructure, engineering, and commercial stages.
-              </motion.p>
-            </motion.div>
-            <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={staggerContainer} className="relative mt-8">
-              <div className="absolute left-[19px] top-6 bottom-6 w-0.5 bg-[var(--border)] hidden sm:block" />
-              <ul className="space-y-6 sm:space-y-10 relative">
-                {processSteps.map((step, index) => (
-                  <motion.li key={step} variants={fadeInUp} className="flex gap-6 sm:gap-8 items-start">
-                    <span className="relative z-10 flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[var(--accent)] text-sm font-bold text-white shadow-md">
-                      {index + 1}
-                    </span>
-                    <div className="pt-2 bg-white flex-1 p-6 rounded-2xl border border-[var(--border)] shadow-sm">
-                      <p className="text-lg font-medium text-[var(--foreground)]">{step}</p>
-                    </div>
-                  </motion.li>
-                ))}
-              </ul>
-            </motion.div>
           </div>
         </section>
 
-        <section id="services" className="site-container pt-24 sm:pt-32">
-          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={staggerContainer} className="mb-16 md:mb-24 flex flex-col items-center text-center">
-            <motion.p variants={fadeInUp} className="text-sm font-semibold uppercase tracking-[0.2em] text-[var(--accent)]">Core Verticals</motion.p>
-            <motion.h2 variants={fadeInUp} className="mt-4 text-4xl font-bold leading-tight md:text-5xl lg:text-5xl max-w-4xl text-[var(--primary)]">
-              Integrated Service Architecture
-            </motion.h2>
-            <motion.p variants={fadeInUp} className="mt-6 max-w-2xl text-lg leading-relaxed text-[var(--muted)]">
-              Three integrated service verticals designed for infrastructure certainty and financial outcomes.
-            </motion.p>
-          </motion.div>
-          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={staggerContainer} className="grid lg:grid-cols-3 gap-6">
-            {services.map((service, idx) => (
-              <Link href={service.href} key={service.title} className="block">
-                <motion.article variants={fadeInUp} className="group flex flex-col justify-between p-8 md:p-10 rounded-[32px] text-white hover:-translate-y-2 transition-all duration-300 shadow-xl overflow-hidden relative h-full">
-                  <div 
-                    className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105"
-                    style={{ 
-                      backgroundImage: `url('${
-                        idx === 0 ? "https://images.unsplash.com/photo-1466611653911-95081537e5b7?auto=format&fit=crop&q=80" 
-                        : idx === 1 ? "https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?auto=format&fit=crop&q=80" 
-                        : "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&q=80"
-                      }')` 
-                    }}
-                  ></div>
-                  <div className="absolute inset-0 bg-gradient-to-t from-[var(--primary)] via-[var(--primary)]/90 to-[var(--primary)]/50 mix-blend-multiply"></div>
-                  <div className="absolute inset-0 bg-[var(--primary)] opacity-70 group-hover:opacity-40 transition-opacity duration-300"></div>
-                  
-                  <div className="relative z-10">
-                    <h3 className="text-2xl md:text-3xl font-bold mb-6 pr-8 text-white drop-shadow-md">{service.title}</h3>
-                    <p className="text-white/90 leading-relaxed text-sm md:text-base drop-shadow-sm font-medium">
-                      {service.detail}
-                    </p>
-                  </div>
-                  <div className="relative z-10 mt-12 h-14 w-14 rounded-full border border-white/30 flex items-center justify-center group-hover:bg-[var(--accent)] group-hover:border-transparent transition-colors backdrop-blur-sm">
-                    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7"/></svg>
-                  </div>
-                </motion.article>
-              </Link>
-            ))}
-          </motion.div>
-        </section>
-
-        <section className="site-container pt-24 sm:pt-32">
-          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={staggerContainer} className="grid lg:grid-cols-2 gap-12 lg:gap-24 items-center border border-[var(--border)] rounded-[40px] p-8 md:p-16 bg-white shadow-[0_0_40px_-15px_rgba(0,0,0,0.1)]">
-            <div>
-              <motion.h2 variants={fadeInUp} className="text-3xl font-bold leading-tight md:text-5xl text-[var(--primary)]">
-                Case Study: Cost Transformation
-              </motion.h2>
-              <motion.p variants={fadeInUp} className="mt-6 text-lg leading-relaxed text-[var(--muted)]">
-                Example benchmark from industrial power optimization through structured PPA deployment. We convert monthly energy expense into a controllable financial lever.
-              </motion.p>
-            </div>
-            <div className="grid gap-6">
-              {caseMetrics.map((metric, i) => (
-                <motion.article key={metric.label} variants={fadeInUp} className={`p-8 rounded-3xl ${i === 2 ? 'bg-[var(--accent)] text-white shadow-xl rotate-1 scale-[1.02]' : 'bg-[var(--background)] border border-[var(--border)]'}`}>
-                  <p className={`text-sm tracking-widest uppercase font-bold ${i === 2 ? 'text-white/90' : 'text-[var(--muted)]'}`}>
-                    {metric.label}
-                  </p>
-                  <p className={`mt-3 text-3xl font-extrabold ${i === 2 ? 'text-white' : 'text-[var(--primary)]'}`}>
-                    {metric.value}
-                  </p>
-                </motion.article>
-              ))}
-            </div>
-          </motion.div>
-        </section>
-
-        <section className="site-container pt-24 sm:pt-32">
-          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={staggerContainer} className="mb-12 md:mb-16">
-            <motion.h2 variants={fadeInUp} className="text-3xl font-bold leading-tight md:text-5xl text-[var(--primary)] text-center">
-              ROI Calculator
-            </motion.h2>
-            <motion.p variants={fadeInUp} className="text-center text-[var(--muted)] mt-4 max-w-2xl mx-auto">
-              Indicative estimate based on current monthly electricity cost and benchmark optimization factors. Slide to visualize.
-            </motion.p>
-          </motion.div>
-          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={staggerContainer} className="max-w-5xl mx-auto bg-white border border-[var(--border)] rounded-[40px] p-8 md:p-16 shadow-[0_0_40px_-15px_rgba(0,0,0,0.1)]">
-            <div className="grid gap-12 lg:grid-cols-2 items-center">
-              <motion.div variants={fadeInUp}>
-                <label htmlFor="monthlyBill" className="block text-sm font-bold uppercase tracking-widest text-[var(--primary)] mb-6">
-                  Current Monthly Electricity Bill
-                </label>
-                <div className="relative">
-                  <span className="absolute left-6 top-1/2 -translate-y-1/2 text-[var(--muted)] font-medium text-2xl">₹</span>
-                  <input
-                    id="monthlyBill"
-                    type="number"
-                    min={1000000}
-                    step={100000}
-                    value={monthlyBill}
-                    onChange={(event) => setMonthlyBill(Number(event.target.value) || 0)}
-                    className="w-full bg-[var(--background)] border border-[var(--border)] rounded-2xl py-6 pl-14 pr-6 text-3xl font-bold text-[var(--primary)] outline-none focus:border-[var(--accent)] focus:ring-2 focus:ring-[var(--accent)] transition-all"
-                  />
-                </div>
-                <input 
-                  type="range" min={1000000} max={50000000} step={500000}
-                  value={monthlyBill} onChange={(e) => setMonthlyBill(Number(e.target.value))}
-                  className="w-full mt-10 accent-[var(--accent)] h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer"
-                />
+        {/* How It Works Section */}
+        <section className="bg-[var(--primary)] py-24 md:py-32 text-white relative overflow-hidden">
+          <div className="absolute inset-0 bg-gradient-to-br from-[var(--accent)]/10 to-transparent"></div>
+          <div className="site-container relative z-10">
+            <div className="flex flex-col md:flex-row md:items-end justify-between mb-20 gap-8">
+              <motion.div 
+                initial="hidden" 
+                whileInView="visible" 
+                viewport={{ once: true }} 
+                variants={staggerContainer}
+                className="max-w-2xl"
+              >
+                <motion.h2 variants={fadeInUp} className="text-4xl md:text-6xl font-bold mb-6">How It Works</motion.h2>
+                <motion.p variants={fadeInUp} className="text-xl text-white/70 font-light">We connect all stakeholders into one delivery pipeline, reducing handoff risk across infrastructure, engineering, and commercial stages.</motion.p>
               </motion.div>
-              <div className="grid gap-4">
-                <motion.div variants={fadeInUp} className="bg-[var(--background)] p-6 rounded-2xl border border-[var(--border)] flex justify-between items-center group hover:border-[var(--accent)] transition-colors">
-                  <p className="text-[var(--muted)] font-medium">Optimized Cost</p>
-                  <p className="text-xl md:text-2xl font-bold text-[var(--primary)]">{formatInr(roi.optimizedMonthly)}</p>
-                </motion.div>
-                <motion.div variants={fadeInUp} className="bg-[var(--background)] p-6 rounded-2xl border border-[var(--border)] flex justify-between items-center group hover:border-[var(--accent)] transition-colors">
-                  <p className="text-[var(--muted)] font-medium">Monthly Savings</p>
-                  <p className="text-xl md:text-2xl font-bold text-[var(--accent)]">{formatInr(roi.monthlySavings)}</p>
-                </motion.div>
-                <motion.div variants={fadeInUp} className="bg-[var(--primary)] text-white p-6 md:p-8 rounded-2xl shadow-xl flex justify-between items-center scale-[1.02]">
-                  <p className="font-semibold text-white/90 text-lg">Annual Savings</p>
-                  <p className="text-3xl md:text-4xl font-extrabold text-[var(--accent)]">{formatInr(roi.annualSavings)}</p>
-                </motion.div>
+              
+              <div className="flex bg-white/5 p-1.5 rounded-full backdrop-blur-md border border-white/10 self-start md:self-auto">
+                <button 
+                  onClick={() => setProcessType('industries')}
+                  className={`px-8 py-3 rounded-full text-sm font-bold tracking-widest uppercase transition-all ${processType === 'industries' ? 'bg-[var(--accent)] text-white shadow-lg shadow-[var(--accent)]/20' : 'text-white/60 hover:text-white'}`}
+                >
+                  For Industries
+                </button>
+                <button 
+                  onClick={() => setProcessType('developers')}
+                  className={`px-8 py-3 rounded-full text-sm font-bold tracking-widest uppercase transition-all ${processType === 'developers' ? 'bg-[var(--accent)] text-white shadow-lg shadow-[var(--accent)]/20' : 'text-white/60 hover:text-white'}`}
+                >
+                  For Developers
+                </button>
               </div>
             </div>
-          </motion.div>
+
+            <div className="relative">
+              {/* Vertical Line */}
+              <div className="absolute left-8 top-0 bottom-0 w-px bg-white/10 hidden md:block"></div>
+              
+              <div className="grid gap-12 relative">
+                {(processType === 'industries' ? industryProcessSteps : developerProcessSteps).map((step, i) => (
+                  <motion.div 
+                    key={i} 
+                    initial="hidden" 
+                    whileInView="visible" 
+                    viewport={{ once: true }} 
+                    variants={fadeInUp}
+                    className="flex gap-8 md:gap-16 items-start"
+                  >
+                    <div className="w-16 h-16 rounded-2xl bg-[var(--accent)] text-white flex items-center justify-center font-black text-2xl flex-shrink-0 shadow-lg shadow-[var(--accent)]/20 relative z-10">
+                      {i + 1}
+                    </div>
+                    <div className="max-w-3xl">
+                      <h3 className="text-2xl md:text-3xl font-bold mb-4">{step.title}</h3>
+                      <p className="text-lg text-white/70 leading-relaxed font-light">{step.description}</p>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+          </div>
         </section>
 
+
+
+        {/* Industry Credibility Section */}
         <section className="site-container pt-24 sm:pt-32">
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={staggerContainer} className="text-center mb-12">
             <motion.h2 variants={fadeInUp} className="text-2xl font-semibold md:text-3xl text-[var(--primary)]">Industry Credibility</motion.h2>
@@ -472,6 +451,7 @@ export default function Home() {
           </motion.div>
         </section>
 
+        {/* CTA Section */}
         <section className="my-24 sm:my-32 site-container">
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={staggerContainer} className="rounded-[40px] p-12 md:p-24 text-center text-white relative overflow-hidden shadow-2xl">
             <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1497435334941-8c899ee9e8e9?auto=format&fit=crop&q=80')] bg-cover bg-center"></div>
