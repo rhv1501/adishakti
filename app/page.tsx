@@ -175,11 +175,15 @@ export default function Home() {
 
       <section className="relative h-screen flex items-center overflow-hidden bg-[var(--primary)]">
         <div className="absolute inset-0 z-0">
-          <img 
-            src="/strategic_consultancy_hero_abstract_1778766932921.png" 
-            alt="Strategic Energy Consultancy" 
+          <video 
+            autoPlay 
+            loop 
+            muted 
+            playsInline
             className="h-full w-full object-cover opacity-60"
-          />
+          >
+            <source src="/hero.mp4" type="video/mp4" />
+          </video>
           <div className="absolute inset-0 bg-gradient-to-t from-[#000000] via-[#000000]/40 to-transparent" />
         </div>
 

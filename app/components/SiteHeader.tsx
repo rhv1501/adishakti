@@ -45,13 +45,19 @@ export default function SiteHeader() {
       }`}
     >
       <div className="site-container flex h-20 items-center justify-between">
-        <Link
-          href="/"
-          className={`text-xl font-bold tracking-tight uppercase transition-colors ${
+        <Link href="/" className="relative z-10 flex items-center gap-3">
+          <img 
+            src="/logo.png" 
+            alt="Adishakti Green Logo" 
+            className={`h-10 w-auto -translate-y-1.5 transition-all duration-300 ${
+              transparentMode ? "brightness-0 invert" : ""
+            }`}
+          />
+          <span className={`text-xl font-bold tracking-tight uppercase transition-colors ${
             transparentMode ? "text-white" : "text-[var(--primary)]"
-          }`}
-        >
-          Adishakti<span className="text-[var(--accent)]">Green</span>
+          }`}>
+            Adishakti<span className="text-[var(--accent)]">Green</span>
+          </span>
         </Link>
 
         {/* Desktop Nav */}
@@ -147,8 +153,11 @@ export default function SiteHeader() {
             className="md:hidden fixed inset-0 top-0 left-0 w-full h-screen bg-white z-[60] overflow-y-auto"
           >
             <div className="flex h-20 items-center justify-between site-container border-b border-[var(--border)]">
-              <Link href="/" onClick={() => setMobileMenuOpen(false)} className="text-xl font-bold text-[var(--primary)]">
-                Adishakti<span className="text-[var(--accent)]">Green</span>
+              <Link href="/" onClick={() => setMobileMenuOpen(false)} className="flex items-center gap-3">
+                <img src="/logo.png" alt="Adishakti Green Logo" className="h-10 w-auto -translate-y-1.5" />
+                <span className="text-xl font-bold text-[var(--primary)] uppercase tracking-tight">
+                  Adishakti<span className="text-[var(--accent)]">Green</span>
+                </span>
               </Link>
               <button onClick={() => setMobileMenuOpen(false)} className="text-[var(--primary)] p-2">
                 <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12"/></svg>

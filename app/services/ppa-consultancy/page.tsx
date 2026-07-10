@@ -169,7 +169,7 @@ export default function PPAConsultancy() {
               <motion.h2 variants={fadeInUp} className="text-3xl md:text-5xl font-bold text-[var(--primary)] mb-8 leading-tight">
                 Bridging Renewable Energy Developers & Industrial Power Consumers
               </motion.h2>
-              <motion.div variants={fadeInUp} className="space-y-6 text-lg text-[var(--muted)] leading-relaxed">
+              <motion.div variants={fadeInUp} className="space-y-6 text-lg text-[var(--muted)] leading-relaxed mb-10">
                 <p>
                   At Aadishakti Green Systems, we work at the intersection of renewable energy development and industrial power procurement. Our role is to help renewable energy developers secure reliable industrial offtakers while enabling commercial and industrial consumers to access competitively priced solar and wind power through Open Access and Captive Power structures.
                 </p>
@@ -177,14 +177,18 @@ export default function PPAConsultancy() {
                   Through our ecosystem-driven approach, we support project identification, commercial structuring, transaction facilitation, and long-term renewable power procurement strategies tailored to industrial energy requirements.
                 </p>
               </motion.div>
+              <motion.div variants={fadeInUp} className="bg-[var(--accent)]/10 border border-[var(--accent)]/20 p-8 rounded-[32px] max-w-md">
+                <div className="flex items-center gap-6">
+                  <p className="text-4xl font-extrabold text-[var(--accent)]">175+</p>
+                  <p className="text-sm font-bold text-[var(--primary)] uppercase tracking-widest leading-relaxed">
+                    MWp Facilitation experience across India's key industrial hubs
+                  </p>
+                </div>
+              </motion.div>
             </div>
-            <motion.div variants={fadeInUp} className="relative">
-              <div className="aspect-square rounded-[40px] overflow-hidden shadow-2xl">
-                <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80" alt="Consultancy" className="w-full h-full object-cover" />
-              </div>
-              <div className="absolute -bottom-8 -left-8 bg-[var(--accent)] text-white p-8 rounded-[32px] shadow-xl max-w-xs">
-                <p className="text-3xl font-bold mb-2">175+ MWp</p>
-                <p className="text-sm font-medium opacity-90">Facilitation experience across India's key industrial hubs.</p>
+            <motion.div variants={fadeInUp} className="w-full">
+              <div className="aspect-video rounded-[32px] overflow-hidden shadow-2xl border border-[var(--border)]">
+                <img src="/ppa.jpeg" alt="Bridging Renewable Energy Developers & Industrial Power Consumers" className="w-full h-full object-cover hover:scale-105 transition-transform duration-700" />
               </div>
             </motion.div>
           </motion.div>

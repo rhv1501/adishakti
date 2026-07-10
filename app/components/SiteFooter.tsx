@@ -5,8 +5,11 @@ export default function SiteFooter() {
     <footer className="border-t border-[#E2E8F0] bg-[var(--primary)] text-white py-16 md:py-24">
       <div className="site-container grid gap-12 md:grid-cols-4">
         <div className="md:col-span-2 pr-8">
-          <Link href="/" className="text-2xl font-bold tracking-tight uppercase">
-            Adishakti<span className="text-[var(--accent)]">Green</span>
+          <Link href="/" className="inline-flex items-center gap-3">
+            <img src="/logo.png" alt="Adishakti Green Logo" className="h-12 w-auto -translate-y-1.5 brightness-0 invert opacity-90 hover:opacity-100 transition-opacity" />
+            <span className="text-2xl font-bold tracking-tight uppercase text-white">
+              Adishakti<span className="text-[var(--accent)]">Green</span>
+            </span>
           </Link>
           <p className="mt-6 max-w-sm text-sm leading-relaxed text-white/70">
             End-to-end renewable energy solutions. From land aggregation to turnkey EPC and structured PPA consultancy, we control the entire value chain for enterprise success.
