@@ -25,7 +25,7 @@ const contactDetails = [
       </svg>
     ),
     label: "Email",
-    value: "business@adishaktigreensystems.com"
+    value: "contact@aadishaktigreensystems.com"
   },
   {
     icon: (
@@ -34,7 +34,7 @@ const contactDetails = [
       </svg>
     ),
     label: "Phone",
-    value: "+91 90000 00000"
+    value: "+919363987964"
   },
   {
     icon: (
